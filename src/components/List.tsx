@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { IoMdAdd } from "react-icons/io";
 
 import TodoItem from "./Item";
 import ItemProps from "interface/ItemProps";
@@ -17,13 +18,15 @@ function TodoList() {
   };
 
   const addTodo = () => {
-    const newTodo: ItemProps = {
-      id: Date.now(),
-      text: input,
-      checked: false,
-    };
-    setTodos([...todos, newTodo]);
-    setInput("");
+    if (input) {
+      const newTodo: ItemProps = {
+        id: Date.now(),
+        text: input,
+        checked: false,
+      };
+      setTodos([...todos, newTodo]);
+      setInput("");
+    }
   };
 
   const deleteTodo = (id: number) => {
@@ -56,6 +59,9 @@ function TodoList() {
           value={input}
           onChange={handleInput}
         />
+        <button type="submit">
+          <IoMdAdd />
+        </button>
       </form>
       <TodoContainer>
         {todos.map((item: ItemProps) => (
@@ -92,6 +98,11 @@ const BigContainer = styled.div`
   form {
     display: flex;
     justify-content: center;
+  }
+  button {
+    border: none;
+    background: none;
+    font-size: 18px;
   }
 
   @media (max-width: 767px) {
