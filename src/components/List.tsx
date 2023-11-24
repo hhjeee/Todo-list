@@ -108,6 +108,7 @@ const TodoInput = styled.input`
   margin-bottom: 20px;
   padding-left: 10px;
   outline: none;
+  font-size: 15px;
 
   @media (max-width: 767px) {
     width: 250px;
